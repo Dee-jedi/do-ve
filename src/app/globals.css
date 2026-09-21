@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-cormorant), "Times New Roman", serif;
+  --font-display: var(--font-cinzel), serif;
+  --font-sans: var(--font-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: var(--font-great-vibes), cursive;
+
+  --color-gold-50: #fbf8f0;
+  --color-gold-100: #f5eed8;
+  --color-gold-200: #eedcaf;
+  --color-gold-300: #e4c47f;
+  --color-gold-400: #dfba73;
+  --color-gold-500: #c59b53;
+  --color-gold-600: #a97e3b;
+  --color-gold-700: #88622d;
+  --color-gold-800: #6a4c26;
+  --color-gold-900: #4a341b;
+
+  --color-obsidian-950: #070606;
+  --color-obsidian-900: #0d0b0a;
+  --color-obsidian-800: #151210;
+  --color-espresso-900: #1b1411;
+  --color-espresso-800: #291e19;
+  --color-espresso-700: #3e2d26;
+  --color-chocolate: #4f372d;
+}
+
+:root {
+  --background: #070606;
+  --foreground: #f5eed8;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #070606;
+}
+
+body {
+  background: #070606;
+  color: #f5eed8;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Luxury Gold Foil Text Gradient */
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fff2d6 0%, #e5c07b 30%, #ffd98a 50%, #b88636 75%, #f5e4be 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-subtle {
+  background: linear-gradient(135deg, #f5eed8 0%, #dfba73 50%, #c59b53 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Luxury Glassmorphism */
+.glass-panel {
+  background: rgba(18, 14, 12, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(223, 186, 115, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px -5px rgba(197, 155, 83, 0.12);
+}
+
+.glass-card-hover {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: rgba(223, 186, 115, 0.4);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.9), 0 0 25px -3px rgba(223, 186, 115, 0.22);
+}
+
+/* Subtle Shimmer Animation */
+@keyframes goldShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(223, 186, 115, 0.15) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: goldShimmer 6s infinite linear;
+}
+
+/* Custom Scrollbar for mobile and desktop */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0d0b0a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e2d26;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #c59b53;
+}
