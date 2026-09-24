@@ -115,9 +115,9 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg max-h-[90vh] flex flex-col rounded-2xl border border-gold-500/40 bg-obsidian-900 text-gold-100 shadow-[0_20px_50px_rgba(0,0,0,0.9)] overflow-hidden">
+      <div className="relative w-full max-w-lg max-h-[90vh] flex flex-col rounded-2xl glass-panel text-gold-100 overflow-hidden">
         {/* Header */}
-        <div className="relative flex items-center justify-between border-b border-gold-900/40 px-6 py-4 bg-linear-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900">
+        <div className="relative flex items-center justify-between border-b border-gold-500/20 px-6 py-4 bg-black/20">
           <div className="flex items-center gap-2.5">
             <div className="flex h-9 w-9 items-center justify-center rounded-full border border-gold-500/30 bg-gold-500/10 text-gold-400">
               <MessageCircleHeart className="h-5 w-5" />
@@ -140,7 +140,7 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
         {/* Scrollable Body */}
         <div className="flex-1 overflow-y-auto p-5 space-y-6">
           {/* Submission Form */}
-          <form onSubmit={handleSubmit} className="space-y-4 rounded-xl border border-gold-500/25 bg-obsidian-900/80 p-4">
+          <form onSubmit={handleSubmit} className="space-y-4 rounded-xl glass-panel p-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               <div>
                 <label className="block text-xs uppercase tracking-wider text-gold-200/70 mb-1">
@@ -220,7 +220,7 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
               {wishes.map((w) => (
                 <div
                   key={w.id}
-                  className="rounded-xl border border-gold-900/40 bg-obsidian-800 p-3.5 transition hover:border-gold-500/40"
+                  className="glass-panel glass-card-hover rounded-xl p-3.5"
                 >
                   <div className="flex items-center justify-between mb-1.5">
                     <span className="font-semibold text-sm text-[#fff2d6]">{w.name}</span>
