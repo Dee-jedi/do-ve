@@ -48,10 +48,10 @@ export default function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
           <div className="text-center space-y-2">
             <Heart className="h-6 w-6 text-gold-400 fill-gold-400/30 mx-auto" />
             <p className="font-serif text-base text-[#fff2d6]">
-              Your presence and prayers are our greatest gift.
+              We are beyond overjoyed to have you celebrate with us and your presence is a gift we deeply appreciate.
             </p>
             <p className="text-xs text-[#a8998c] leading-relaxed max-w-xs mx-auto">
-              If you feel moved to honor us with a monetary gift towards establishing our new home, we gratefully appreciate your kind love offering.
+              If you would like to honour us with a cash gift, please send to the account number below:
             </p>
           </div>
 
@@ -69,21 +69,21 @@ export default function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
 
             <div className="space-y-1 text-left">
               <div className="text-xs text-gold-200/70">Bank Name</div>
-              <div className="font-semibold text-sm text-white">Guaranty Trust Bank (GTBank)</div>
+              <div className="font-semibold text-sm text-white">United Bank for Africa (UBA)</div>
             </div>
 
             <div className="mt-3 flex items-center justify-between rounded-lg bg-[#0c0a09] p-2.5 border border-espresso-700">
               <div>
                 <div className="text-[10px] uppercase tracking-wider text-gold-400/80">Account Number</div>
                 <div className="font-mono text-base font-bold text-[#fff2d6] tracking-wider">
-                  0123456789
+                  2278707892
                 </div>
               </div>
               <button
-                onClick={() => copyToClipboard("0123456789", "gtb")}
+                onClick={() => copyToClipboard("2278707892", "uba")}
                 className="flex items-center gap-1.5 rounded-md border border-gold-500/40 bg-[#1e1713] px-3 py-1.5 text-xs text-gold-400 hover:bg-gold-500/20 transition"
               >
-                {copiedAccount === "gtb" ? (
+                {copiedAccount === "uba" ? (
                   <>
                     <Check className="h-3.5 w-3.5 text-emerald-400" />
                     <span className="text-emerald-400 font-medium">Copied</span>
@@ -98,7 +98,7 @@ export default function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
             </div>
 
             <div className="mt-2 text-left text-xs text-[#a8998c]">
-              Account Name: <span className="text-gold-200">Dorcas & Victor</span>
+              Account Name: <span className="text-gold-200">Victor Ezennaya</span>
             </div>
           </div>
 

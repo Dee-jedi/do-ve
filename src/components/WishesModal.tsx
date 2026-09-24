@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import { X, Heart, Sparkles, Send, MessageCircleHeart } from "lucide-react";
 import confetti from "canvas-confetti";
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
 interface Wish {
   id: string;
@@ -49,14 +51,29 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
   const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem("dv_wishes");
-    if (saved) {
-      try {
-        setWishes(JSON.parse(saved));
-      } catch {
-        // use default
+    const q = query(collection(db, "wishes"), orderBy("createdAt", "desc"));
+    const unsubscribe = onSnapshot(q, (snapshot) => {
+      const fetchedWishes: Wish[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        let dateString = "Recently";
+        if (data.createdAt) {
+          dateString = new Date(data.createdAt.toDate()).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+        fetchedWishes.push({
+          id: doc.id,
+          name: data.name,
+          relation: data.relation,
+          message: data.message,
+          date: dateString,
+        });
+      });
+      if (fetchedWishes.length > 0) {
+        setWishes(fetchedWishes);
       }
-    }
+    });
+
+    return () => unsubscribe();
   }, []);
 
   const triggerCelebration = () => {
@@ -69,30 +86,29 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !message.trim()) return;
 
-    const newWish: Wish = {
-      id: Date.now().toString(),
-      name: name.trim(),
-      relation,
-      message: message.trim(),
-      date: "Just now",
-    };
+    try {
+      await addDoc(collection(db, "wishes"), {
+        name: name.trim(),
+        relation,
+        message: message.trim(),
+        createdAt: serverTimestamp(),
+      });
 
-    const updated = [newWish, ...wishes];
-    setWishes(updated);
-    localStorage.setItem("dv_wishes", JSON.stringify(updated));
+      triggerCelebration();
+      setSubmitted(true);
+      setName("");
+      setMessage("");
 
-    triggerCelebration();
-    setSubmitted(true);
-    setName("");
-    setMessage("");
-
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 4000);
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 4000);
+    } catch (error) {
+      console.error("Error saving wish:", error);
+    }
   };
 
   if (!isOpen) return null;
