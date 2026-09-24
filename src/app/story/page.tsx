@@ -17,7 +17,8 @@ const storyChapters = [
     title: "A Match Made in Core Subjects",
     paragraphs: [
       "Victor and Dorcas met in August of 2022 at Beulah International Schools where he taught Mathematics and she had just been employed fresh-off NYSC to be the English teacher.",
-      "What started as an attempt to recruit an instrumentalist for the church blossomed into years of friendship, partnership, and a love story we are thrilled to celebrate with you."
+      "They started talking when Dorcas saw Victor's laptop screen saver featuring him on the backup mic in church, asked him what church he went to and they discovered that they went to the same church (although Victor worshipped at the headquarters while Dorcas worshipped at a branch.)",
+      "The rest, they say, is history"
     ]
   },
   {
@@ -25,8 +26,10 @@ const storyChapters = [
     chapter: "CHAPTER II",
     title: "A Cash-Crunch Love",
     paragraphs: [
-      "Sometime in February 2023, during the nationwide cash scarcity, Victor and Dorcas found themselves stranded after work due to the unavailability of cash to pay for transportation.",
-      "They had to walk a long distance under the scorching sun, finding solace in each other's company and the shared experience of surviving the economic hardship."
+      "Dorcas tried to persuade Victor to come to her branch especially when she discovered that he could play a number of musical instruments and the church needed his services.",
+      "\"I don't like small branches; everybody will know you. I don't want anybody to know me.\" Victor argued.",
+      "Dorcas said, \"Hold my drink\"...",
+      "In a matter of months (thanks to the cash crunch of 2023 where he could no longer get cash to pay to the headquarters, to the glory of God.😂) he was answering questions in Sunday school, playing the keyboard, drums and the bass guitar"
     ]
   },
   {
@@ -34,8 +37,7 @@ const storyChapters = [
     chapter: "CHAPTER III",
     title: "The Gentle Chokehold",
     paragraphs: [
-      "It was at this point that he realised that this Akwa Ibom woman had him in a chokehold. He had to make a move.",
-      "He asked her out on a date, and she said yes. They went to a local restaurant and had a good time. He asked her to be his girlfriend, and she said yes."
+      "It was at this point that he realised that this Akwa Ibom woman had him in a chokehold."
     ]
   },
   {
@@ -43,8 +45,8 @@ const storyChapters = [
     chapter: "CHAPTER IV",
     title: "From Friendship to Forever",
     paragraphs: [
-      "It's been years of friendship and partnership, and we are excited to take this next step in our journey together.",
-      "That's where all great relationships start."
+      "Today, you have come to witness what started as an attempt to recruit an instrumentalist for the church, years of friendship and partnership.",
+      "Victor was just like a brother to Dorcas. Yes. That's where all great relationships start."
     ]
   }
 ];
