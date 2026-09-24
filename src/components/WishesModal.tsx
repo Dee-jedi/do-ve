@@ -14,37 +14,13 @@ interface Wish {
   date: string;
 }
 
-const INITIAL_WISHES: Wish[] = [
-  {
-    id: "1",
-    name: "Aunty Grace & Family",
-    relation: "Bride's Family",
-    message: "Dorcas, watching you grow into such a graceful woman has been our joy. May your union with Victor be richly blessed with peace, fruitfulness, and unending joy!",
-    date: "Just now",
-  },
-  {
-    id: "2",
-    name: "Emeka & Tola",
-    relation: "Best Friends",
-    message: "Victor, you found your jewel! Seeing how you two look at each other gives all of us so much warmth. Cheers to forever!",
-    date: "1 hour ago",
-  },
-  {
-    id: "3",
-    name: "Pastor & Mrs. Adebayo",
-    relation: "Family Friends",
-    message: "May the cord of three strands never be broken. Keep Christ at the center of your marriage, Dorcas & Victor. Congratulations!",
-    date: "Today",
-  },
-];
-
 interface WishesModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
-  const [wishes, setWishes] = useState<Wish[]>(INITIAL_WISHES);
+  const [wishes, setWishes] = useState<Wish[]>([]);
   const [name, setName] = useState("");
   const [relation, setRelation] = useState("Friend");
   const [message, setMessage] = useState("");
@@ -68,9 +44,7 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
           date: dateString,
         });
       });
-      if (fetchedWishes.length > 0) {
-        setWishes(fetchedWishes);
-      }
+      setWishes(fetchedWishes);
     });
 
     return () => unsubscribe();
