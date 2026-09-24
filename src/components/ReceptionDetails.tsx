@@ -111,9 +111,9 @@ export default function ReceptionDetails({
         {/* 3 Core Information Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {/* Card 1: The Solemnization */}
-          <motion.div {...scrollReveal(0.1)} className="rounded-2xl border border-espresso-700/80 bg-[#120e0c]/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <motion.div {...scrollReveal(0.1)} className="rounded-2xl border border-gold-900/40 bg-obsidian-900/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
             <div className="space-y-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-[#1f1713] text-gold-400">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-obsidian-800 text-gold-400">
                 <Calendar className="h-5 w-5" />
               </div>
               <span className="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block">
@@ -132,7 +132,7 @@ export default function ReceptionDetails({
 
             <button
               onClick={handleAddToCalendar}
-              className="mt-5 w-full flex items-center justify-center gap-2 rounded-lg border border-gold-500/40 bg-[#19120f] py-2 text-xs text-gold-200 hover:border-gold-400 hover:text-white transition cursor-pointer"
+              className="mt-5 w-full flex items-center justify-center gap-2 rounded-lg border border-gold-500/40 bg-obsidian-900 py-2 text-xs text-gold-200 hover:border-gold-400 hover:text-white transition cursor-pointer"
             >
               <Sparkles className="h-3.5 w-3.5 text-gold-400" />
               <span>{calendarAdded ? "Added to Calendar!" : "Add to Calendar (.ics)"}</span>
@@ -140,9 +140,9 @@ export default function ReceptionDetails({
           </motion.div>
 
           {/* Card 2: The Venue & Location */}
-          <motion.div {...scrollReveal(0.2)} className="rounded-2xl border border-espresso-700/80 bg-[#120e0c]/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <motion.div {...scrollReveal(0.2)} className="rounded-2xl border border-gold-900/40 bg-obsidian-900/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
             <div className="space-y-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-[#1f1713] text-gold-400">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-obsidian-800 text-gold-400">
                 <MapPin className="h-5 w-5" />
               </div>
               <span className="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block">
@@ -163,7 +163,7 @@ export default function ReceptionDetails({
               href="https://www.google.com/maps/search/?api=1&query=Insight+Bible+Church+227+Nsikak+Eduok+Avenue+Uyo"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 w-full flex items-center justify-center gap-2 rounded-lg border border-gold-500/40 bg-[#19120f] py-2 text-xs text-gold-200 hover:border-gold-400 hover:text-white transition cursor-pointer"
+              className="mt-5 w-full flex items-center justify-center gap-2 rounded-lg border border-gold-500/40 bg-obsidian-900 py-2 text-xs text-gold-200 hover:border-gold-400 hover:text-white transition cursor-pointer"
             >
               <ExternalLink className="h-3.5 w-3.5 text-gold-400" />
               <span>Navigate via Google Maps</span>
@@ -171,9 +171,9 @@ export default function ReceptionDetails({
           </motion.div>
 
           {/* Card 3: The Color Palette & Dress Code */}
-          <motion.div {...scrollReveal(0.3)} className="rounded-2xl border border-espresso-700/80 bg-[#120e0c]/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+          <motion.div {...scrollReveal(0.3)} className="rounded-2xl border border-gold-900/40 bg-obsidian-900/90 p-6 flex flex-col justify-between transition duration-300 hover:border-gold-500/50 hover:shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
             <div className="space-y-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-[#1f1713] text-gold-400">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-gold-500/30 bg-obsidian-800 text-gold-400">
                 <Palette className="h-5 w-5" />
               </div>
               <span className="text-[10px] uppercase tracking-widest text-gold-400 font-semibold block">
@@ -216,7 +216,7 @@ export default function ReceptionDetails({
           <motion.div
             {...scrollReveal(0.1)}
             onClick={onOpenWishes}
-            className="group cursor-pointer rounded-2xl border border-gold-500/30 bg-linear-to-r from-[#19120f] via-[#241a15] to-[#19120f] p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_25px_rgba(223,186,115,0.15)]"
+            className="group cursor-pointer rounded-2xl border border-gold-500/30 bg-linear-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_25px_rgba(223,186,115,0.15)]"
           >
             <div className="flex items-center gap-3.5">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gold-500/40 bg-gold-500/15 text-gold-400 group-hover:scale-110 transition">
@@ -238,7 +238,7 @@ export default function ReceptionDetails({
           <motion.div
             {...scrollReveal(0.2)}
             onClick={onOpenGifts}
-            className="group cursor-pointer rounded-2xl border border-gold-500/30 bg-linear-to-r from-[#19120f] via-[#241a15] to-[#19120f] p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_25px_rgba(223,186,115,0.15)]"
+            className="group cursor-pointer rounded-2xl border border-gold-500/30 bg-linear-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_25px_rgba(223,186,115,0.15)]"
           >
             <div className="flex items-center gap-3.5">
               <div className="flex h-12 w-12 items-center justify-center rounded-xl border border-gold-500/40 bg-gold-500/15 text-gold-400 group-hover:scale-110 transition">
@@ -261,7 +261,7 @@ export default function ReceptionDetails({
         <motion.div
           {...scrollReveal(0.1)}
           onClick={onOpenInvitation}
-          className="group cursor-pointer rounded-2xl border border-gold-400/40 bg-linear-to-r from-[#0b1b3d]/60 via-[#1f1713] to-[#0b1b3d]/60 p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_30px_rgba(223,186,115,0.2)]"
+          className="group cursor-pointer rounded-2xl border border-gold-400/40 bg-linear-to-r from-obsidian-900 via-obsidian-800 to-obsidian-900 p-5 flex items-center justify-between transition duration-300 hover:border-gold-400 hover:shadow-[0_0_30px_rgba(223,186,115,0.2)]"
         >
           <div className="flex items-center gap-3.5">
             <div className="relative h-14 w-11 rounded-lg overflow-hidden border border-gold-400/50 shadow-md shrink-0">
@@ -290,7 +290,7 @@ export default function ReceptionDetails({
         </motion.div>
 
         {/* Share with Table Guests Bar */}
-        <motion.div {...scrollReveal(0.15)} className="rounded-2xl border border-espresso-700 bg-[#100d0b] p-6 text-center space-y-3">
+        <motion.div {...scrollReveal(0.15)} className="rounded-2xl border border-gold-900/40 bg-obsidian-900 p-6 text-center space-y-3">
           <QrCode className="h-8 w-8 text-gold-400 mx-auto animate-pulse" />
           <h4 className="font-serif text-xl text-[#fff2d6]">Attending at a Guest Table?</h4>
           <p className="text-xs text-[#a8998c] max-w-sm mx-auto">
@@ -298,7 +298,7 @@ export default function ReceptionDetails({
           </p>
           <button
             onClick={onOpenShare}
-            className="inline-flex items-center gap-2 rounded-full border border-gold-500/50 bg-[#1e1713] px-5 py-2.5 text-xs text-gold-400 hover:bg-gold-500/20 hover:text-white transition cursor-pointer"
+            className="inline-flex items-center gap-2 rounded-full border border-gold-500/50 bg-obsidian-800 px-5 py-2.5 text-xs text-gold-400 hover:bg-gold-500/20 hover:text-white transition cursor-pointer"
           >
             <QrCode className="h-4 w-4" />
             <span>Show QR Code / Copy Link</span>
@@ -306,10 +306,10 @@ export default function ReceptionDetails({
         </motion.div>
 
         {/* Footer */}
-        <motion.footer {...scrollReveal(0.2)} className="pt-8 border-t border-espresso-700/60 text-center space-y-4">
+        <motion.footer {...scrollReveal(0.2)} className="pt-8 border-t border-gold-900/30 text-center space-y-4">
           <div className="flex items-center justify-center gap-2">
             <div className="h-px w-12 bg-espresso-700" />
-            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gold-400/40 bg-[#18120f]">
+            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-gold-400/40 bg-obsidian-800">
               <span className="font-serif text-xs font-bold text-gold-gradient">D&amp;V</span>
             </div>
             <div className="h-px w-12 bg-espresso-700" />
