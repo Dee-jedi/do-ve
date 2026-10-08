@@ -9,10 +9,10 @@ import {
   MessageCircleHeart,
   Gift,
   Heart,
+  Scroll,
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useRouter } from "next/navigation";
-import AudioPlayer from "./AudioPlayer";
 
 interface NavbarProps {
   onOpenStory?: () => void;
@@ -79,11 +79,11 @@ export default function Navbar({
       },
     },
     {
-      label: "Order of Events",
-      icon: Clock,
+      label: "Order of Service",
+      icon: Scroll,
       action: () => {
         setIsOpen(false);
-        handleOpenEvents();
+        router.push("/order-of-service");
       },
     },
     {
@@ -112,7 +112,13 @@ export default function Navbar({
         <div className="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between">
           {/* Couple Wordmark / Brand: DO.VE */}
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => {
+              if (window.location.pathname === "/") {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              } else {
+                router.push("/");
+              }
+            }}
             className="flex items-center gap-2 group cursor-pointer focus:outline-none py-1"
           >
             <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.2em] text-gold-gradient transition group-hover:brightness-110 drop-shadow-sm">
@@ -120,7 +126,7 @@ export default function Navbar({
             </span>
           </button>
 
-          {/* Desktop Nav Links (Streamlined 3 clean pillars) */}
+          {/* Desktop Nav Links */}
           <nav className="hidden md:flex items-center gap-8">
             {primaryNavItems.map((item, idx) => (
               <button
@@ -139,10 +145,8 @@ export default function Navbar({
             </button>
           </nav>
 
-          {/* Right Action Group: Music + Hamburger */}
+          {/* Right Action Group */}
           <div className="flex items-center gap-2.5 sm:gap-3">
-            <AudioPlayer />
-
             {/* Hamburger Button (Mobile & Tablet only, hidden on desktop) */}
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -222,28 +226,16 @@ export default function Navbar({
                         ease: [0.16, 1, 0.3, 1], // Expo-out curve
                       }}
                       onClick={item.action}
-                      className={`w-full flex items-center justify-between p-3.5 rounded-xl text-left transition-all duration-300 cursor-pointer ${
-                        item.highlight
-                          ? "bg-linear-to-r from-[#241712] to-[#1c130f] border border-gold-500/40 text-[#fff2d6] shadow-[0_0_20px_rgba(223,186,115,0.1)] hover:shadow-[0_0_25px_rgba(223,186,115,0.3)] hover:border-gold-400"
-                          : "bg-[#16110e]/70 hover:bg-[#1f1713] border border-espresso-700/40 text-gold-200 hover:text-[#fff2d6] hover:border-gold-500/60"
-                      }`}
+                      className="w-full flex items-center justify-between py-4 text-left transition-all duration-300 cursor-pointer border-b border-espresso-700/40 text-gold-200/90 hover:text-white group"
                     >
-                      <div className="flex items-center gap-3.5">
-                        <div
-                          className={`flex h-9 w-9 items-center justify-center rounded-lg transition-transform duration-300 group-hover:scale-110 ${
-                            item.highlight
-                              ? "bg-gold-500/20 text-gold-400"
-                              : "bg-[#1c1411] text-gold-400/80"
-                          }`}
-                        >
-                          <Icon className="h-4.5 w-4.5" />
-                        </div>
-                        <span className="font-serif text-base tracking-wide">
+                      <div className="flex items-center gap-4">
+                        <Icon className={`h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110 ${item.highlight ? "text-gold-400" : "text-gold-500/70"}`} />
+                        <span className={`font-serif text-lg tracking-wide ${item.highlight ? "text-gold-300" : ""}`}>
                           {item.label}
                         </span>
                       </div>
                       {item.highlight && (
-                        <span className="text-[9px] uppercase tracking-widest bg-gold-400/20 text-gold-400 px-2 py-0.5 rounded-full border border-gold-400/40">
+                        <span className="text-[9px] uppercase tracking-widest text-gold-400 font-mono">
                           Guestbook
                         </span>
                       )}
@@ -263,12 +255,10 @@ export default function Navbar({
                       setIsOpen(false);
                       handleOpenGifts();
                     }}
-                    className="w-full flex items-center gap-3.5 p-3.5 rounded-xl text-left transition-all duration-200 cursor-pointer bg-[#16110e]/70 hover:bg-[#1f1713] border border-espresso-700/40 text-gold-200/90 hover:text-[#fff2d6]"
+                    className="w-full flex items-center gap-4 py-4 text-left transition-all duration-200 cursor-pointer border-b border-espresso-700/40 text-gold-200/90 hover:text-white group"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1c1411] text-gold-400/80">
-                      <Gift className="h-4.5 w-4.5" />
-                    </div>
-                    <span className="font-serif text-base tracking-wide">
+                    <Gift className="h-4.5 w-4.5 text-gold-500/70 transition-transform duration-300 group-hover:scale-110" />
+                    <span className="font-serif text-lg tracking-wide">
                       Love Offerings &amp; Gifts
                     </span>
                   </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { X, Clock, MapPin, Sparkles, Heart } from "lucide-react";
 
 interface OrderOfEventsModalProps {
@@ -42,6 +42,17 @@ const EVENTS = [
 ];
 
 export default function OrderOfEventsModal({ isOpen, onClose }: OrderOfEventsModalProps) {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (

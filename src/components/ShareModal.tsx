@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { X, QrCode, Copy, Check, Share2 } from "lucide-react";
 
 interface ShareModalProps {
@@ -18,6 +18,17 @@ export default function ShareModal({ isOpen, onClose }: ShareModalProps) {
       setTimeout(() => setCopied(false), 2000);
     }
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 

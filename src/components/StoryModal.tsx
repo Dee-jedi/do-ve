@@ -12,21 +12,27 @@ interface StoryModalProps {
 const CHAPTERS = [
   {
     chapter: "Chapter I",
-    title: "The Divine Intersection",
-    date: "The Beginning",
-    text: "It started in the quietest of moments. Neither expected ordinary days to turn extraordinary, but in God's sovereign orchestration, Dorcas and Victor's paths crossed. What began as an effortless conversation bloomed into hours of laughter, mutual admiration, and an undeniable kindred bond.",
+    title: "A Match Made in Core Subjects",
+    date: "August 2022",
+    text: "Victor and Dorcas met in August of 2022 at Beulah International Schools where he taught Mathematics and she had just been employed fresh-off NYSC to be the English teacher. They started talking when Dorcas saw Victor's laptop screen saver featuring him on the backup mic in church, asked him what church he went to and they discovered that they went to the same church (although Victor worshipped at the headquarters while Dorcas worshipped at a branch). The rest, they say, is history.",
   },
   {
     chapter: "Chapter II",
-    title: "Friendship Turned Sanctuary",
-    date: "Growing in Grace",
-    text: "Through every season, Victor found in Dorcas not just beauty, but wisdom, gentleness, and an unshakeable faith. In Victor, Dorcas found her protector, confidant, and biggest cheerleader. Their love wasn't a sudden storm; it was the steady, warm glow of morning light.",
+    title: "A Cash-Crunch Love",
+    date: "2023",
+    text: "Dorcas tried to persuade Victor to come to her branch especially when she discovered that he could play a number of musical instruments and the church needed his services. \"I don't like small branches; everybody will know you. I don't want anybody to know me.\" Victor argued. Dorcas said, \"Hold my drink\"... In a matter of months (thanks to the cash crunch of 2023 where he could no longer get cash to pay to the headquarters, to the glory of God.😂) he was answering questions in Sunday school, playing the keyboard, drums and the bass guitar.",
   },
   {
     chapter: "Chapter III",
-    title: "The Question & A Joyous 'Yes!'",
-    date: "The Proposal",
-    text: "With hearts anchored in God and eyes set on a shared purpose, Victor took the knee, asking Dorcas to walk through eternity together. Through joyful tears and radiant smiles, the answer was an ecstatic 'YES!'",
+    title: "The Akwa Ibom Effect",
+    date: "The Turning Point",
+    text: "What began as routine Sunday appearances soon became an unspoken anticipation. Between weekly rehearsals, shared rides, and lingering conversations after service, the headquarters boy was completely captivated. It was at this point that he realised that this Akwa Ibom woman had him in a chokehold—and truthfully, there was no escaping, nor did he want to.",
+  },
+  {
+    chapter: "Chapter IV",
+    title: "From \"Brother\" to Forever",
+    date: "Today & Always",
+    text: "Today, you have come to witness what started as an attempt to recruit an instrumentalist for the church, years of friendship and partnership. Victor was just like a brother to Dorcas. Yes. That's where all great relationships start. Somewhere between the music, the laughter, and walking through seasons of life together, God wrote a chapter neither saw coming: turning the closest of friends into each other's forever.",
   },
 ];
 

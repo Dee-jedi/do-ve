@@ -98,33 +98,34 @@ export default function LoveStoryPreview() {
             transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
             className="relative mx-auto w-full max-w-xl aspect-[4/3] sm:aspect-video mt-12 rounded-[2.5rem] sm:rounded-[3rem] overflow-hidden shadow-[0_0_40px_rgba(223,186,115,0.15)] border border-gold-900/30"
           >
-            <AnimatePresence mode="wait">
+            {images.map((src, index) => (
               <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, scale: currentIndex % 2 === 0 ? 1.15 : 1 }}
-                animate={{
-                  opacity: 1,
-                  scale: currentIndex % 2 === 0 ? 1 : 1.15,
-                  transition: {
-                    opacity: { duration: 2, ease: "easeInOut" },
-                    scale: { duration: 7, ease: "linear" }
-                  }
-                }}
-                exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
+                key={src}
                 className="absolute inset-0 origin-center"
+                initial={false}
+                animate={{
+                  opacity: index === currentIndex ? 1 : 0,
+                  scale: index === currentIndex ? (index % 2 === 0 ? 1 : 1.15) : (index % 2 === 0 ? 1.15 : 1),
+                  zIndex: index === currentIndex ? 10 : 0,
+                  pointerEvents: index === currentIndex ? "auto" : "none",
+                }}
+                transition={{
+                  opacity: { duration: 2, ease: "easeInOut" },
+                  scale: { duration: 8, ease: "linear" }
+                }}
               >
                 <Image
-                  src={images[currentIndex]}
-                  alt={`Memory ${currentIndex + 1}`}
+                  src={src}
+                  alt={`Memory ${index + 1}`}
                   fill
                   className="object-cover object-[center_20%] brightness-[0.85] contrast-[1.15]"
                   sizes="(max-width: 768px) 100vw, 800px"
-                  priority
+                  priority={index === 0}
                 />
               </motion.div>
-            </AnimatePresence>
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(7,6,6,0.6)_100%)] pointer-events-none" />
-            <div className="absolute inset-0 bg-linear-to-t from-obsidian-950/70 via-transparent to-transparent pointer-events-none" />
+            ))}
+            <div className="absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(7,6,6,0.6)_100%)] pointer-events-none" />
+            <div className="absolute inset-0 z-20 bg-linear-to-t from-obsidian-950/70 via-transparent to-transparent pointer-events-none" />
           </motion.div>
         )}
 

@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, BookOpen, Gift } from "lucide-react";
 import { motion } from "framer-motion";
-import Countdown from "./Countdown";
+import { useRouter } from "next/navigation";
 
 // Cinematic blur-to-sharp reveal with vertical float
 const blurReveal = (delay: number = 0) => ({
@@ -28,8 +28,12 @@ const titleReveal = {
   },
 };
 
-export default function Hero() {
-  const [isElapsed, setIsElapsed] = useState(false);
+interface HeroProps {
+  onOpenGifts?: () => void;
+}
+
+export default function Hero({ onOpenGifts }: HeroProps) {
+  const router = useRouter();
 
   const scrollToStory = () => {
     const el = document.getElementById("reception-details");
@@ -64,6 +68,42 @@ export default function Hero() {
         <div className="absolute inset-0 bg-linear-to-b from-transparent via-obsidian-950/60 to-obsidian-950 pointer-events-none" />
       </motion.div>
 
+      {/* Floating Ambient Magical Particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none mix-blend-screen">
+        {[...Array(20)].map((_, i) => {
+          const size = (i % 3) + 1; 
+          const left = (i * 17) % 100;
+          const top = (i * 23) % 100;
+          const duration = 12 + (i % 8) * 2;
+          const delay = (i % 5) * 2;
+          
+          return (
+            <motion.div
+              key={i}
+              className="absolute rounded-full bg-gold-300 shadow-[0_0_10px_rgba(223,186,115,0.9)]"
+              style={{
+                width: size,
+                height: size,
+                left: `${left}vw`,
+                top: `${top}vh`,
+              }}
+              initial={{ opacity: 0, y: 0 }}
+              animate={{
+                opacity: [0, 0.4, 0.8, 0.4, 0],
+                y: -150 - (i * 15),
+                x: (i % 2 === 0 ? 40 : -40),
+              }}
+              transition={{
+                duration: duration,
+                repeat: Infinity,
+                ease: "linear",
+                delay: delay,
+              }}
+            />
+          );
+        })}
+      </div>
+
       {/* Spacing for Top Navbar */}
       <div className="h-16 sm:h-20 shrink-0" />
 
@@ -97,39 +137,55 @@ export default function Hero() {
           className="w-24 h-px bg-linear-to-r from-transparent via-gold-400 to-transparent mt-3 mb-2 shadow-[0_0_12px_rgba(223,186,115,0.5)]"
         />
 
-        {/* Date & Location — blur reveal */}
-        <motion.p
-          {...blurReveal(2.0)}
-          className="font-sans text-[10px] sm:text-xs tracking-[0.25em] sm:tracking-[0.3em] uppercase text-gold-200/80 font-light leading-relaxed mt-4"
-        >
-          Saturday, October 10, 2026 <br className="sm:hidden" />
-          <span className="hidden sm:inline"> &bull; </span>
-          <span className="sm:hidden text-gold-500/50 block my-1">❦</span>
-          Uyo, Nigeria
-        </motion.p>
-
         {/* Romantic Tagline — soft drift with blur */}
         <motion.p
           initial={{ opacity: 0, y: 30, filter: "blur(8px)", rotate: -1 }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)", rotate: 0 }}
-          transition={{ duration: 1.6, delay: 2.3, ease: [0.16, 1, 0.3, 1] as const }}
-          className="font-script text-3xl sm:text-4xl text-gold-200/90 mt-6 sm:mt-8 drop-shadow-md"
+          transition={{ duration: 1.6, delay: 2.0, ease: [0.16, 1, 0.3, 1] as const }}
+          className="font-script text-3xl sm:text-4xl text-gold-200/90 mt-5 sm:mt-6 drop-shadow-md"
         >
           Forever Begins Today
         </motion.p>
-      </div>
 
-      {/* Bottom Section: Countdown & Scroll Indicator */}
-      <div className="relative z-10 w-full mt-auto flex flex-col items-center pb-6 sm:pb-8">
-        {/* Minimal Countdown Clock */}
+        {/* Order of Service CTA Button */}
         <motion.div
           initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.2, delay: 2.8, ease: [0.16, 1, 0.3, 1] as const }}
-          className="w-full px-6"
+          transition={{ duration: 1.2, delay: 2.4, ease: [0.16, 1, 0.3, 1] as const }}
+          className="w-full flex justify-center px-6 mt-8 sm:mt-10"
         >
-          <Countdown onElapsedChange={setIsElapsed} />
+          <button
+            onClick={() => router.push("/order-of-service")}
+            className="group relative inline-flex items-center gap-3 px-8 py-3.5 sm:px-10 sm:py-4 rounded-full border border-gold-500/50 bg-[#17110e]/90 text-gold-100 hover:text-white backdrop-blur-md shadow-[0_0_25px_rgba(223,186,115,0.2)] hover:shadow-[0_0_35px_rgba(223,186,115,0.4)] hover:border-gold-400 transition-all duration-300 hover:scale-[1.03] cursor-pointer"
+          >
+            <BookOpen className="w-4 h-4 text-gold-400 group-hover:text-gold-200 transition-colors" />
+            <span className="font-serif text-xs sm:text-sm uppercase tracking-[0.25em] font-medium text-gold-200 group-hover:text-gold-100">
+              Order of Service
+            </span>
+          </button>
         </motion.div>
+
+        {/* Leave a Gift CTA Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 1.2, delay: 2.6, ease: [0.16, 1, 0.3, 1] as const }}
+          className="w-full flex justify-center px-6 mt-5 sm:mt-6"
+        >
+          <button
+            onClick={onOpenGifts}
+            className="group relative inline-flex items-center gap-2.5 px-6 py-2.5 rounded-full border border-gold-900/40 text-gold-300/80 hover:text-gold-100 hover:border-gold-500/40 hover:bg-gold-500/10 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+          >
+            <Gift className="w-3.5 h-3.5 text-gold-400/70 group-hover:text-gold-300 transition-colors" />
+            <span className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] font-medium transition-colors">
+              Leave a Gift
+            </span>
+          </button>
+        </motion.div>
+      </div>
+
+      {/* Bottom Section: Scroll Indicator */}
+      <div className="relative z-10 w-full mt-auto flex flex-col items-center pb-6 sm:pb-8">
 
         {/* Scroll Indicator — breathes in with a float */}
         <motion.div
