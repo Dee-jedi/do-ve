@@ -241,7 +241,7 @@ export default function WishesSection() {
                   &ldquo;
                 </div>
                 
-                <p className="text-lg sm:text-xl text-[#e0d6c5] leading-relaxed italic font-serif mb-6">
+                <p className="text-lg sm:text-xl text-[#e0d6c5] leading-relaxed italic font-serif mb-6 whitespace-pre-wrap">
                   {w.message}
                 </p>
                 
