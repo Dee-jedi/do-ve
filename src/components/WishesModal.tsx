@@ -65,7 +65,7 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
     if (!name.trim() || !message.trim()) return;
 
     try {
-      await addDoc(collection(db, "wishes"), {
+      await addDoc(collection(db, "pendingWishes"), {
         name: name.trim(),
         relation,
         message: message.trim(),
@@ -79,7 +79,7 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
 
       setTimeout(() => {
         setSubmitted(false);
-      }, 4000);
+      }, 5000);
     } catch (error) {
       console.error("Error saving wish:", error);
     }
@@ -172,9 +172,9 @@ export default function WishesModal({ isOpen, onClose }: WishesModalProps) {
             </button>
 
             {submitted && (
-              <div className="flex items-center justify-center gap-2 rounded-lg bg-gold-400/15 border border-gold-400/40 p-2 text-xs text-gold-200 animate-fade-in">
-                <Heart className="h-3.5 w-3.5 fill-gold-400 text-gold-400" />
-                <span>Thank you! Your wish was delivered with love.</span>
+              <div className="flex items-center justify-center gap-2 rounded-lg bg-gold-400/15 border border-gold-400/40 p-2 text-xs text-gold-200 animate-fade-in text-center">
+                <Heart className="h-3.5 w-3.5 fill-gold-400 text-gold-400 shrink-0" />
+                <span>Thank you! Your heartfelt blessing has been received and will appear shortly once reviewed.</span>
               </div>
             )}
           </form>

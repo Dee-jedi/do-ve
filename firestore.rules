@@ -1,0 +1,33 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Allow public read access to the love_story collection
+    match /love_story/{document=**} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    // Allow public read for approved wishes, and allow admin to publish or delete them
+    match /wishes/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow delete: if true;
+      allow update: if false;
+    }
+
+    // Allow guests to submit pending wishes, and allow admin to read and delete them
+    match /pendingWishes/{document=**} {
+      allow read: if true;
+      allow create: if true;
+      allow delete: if true;
+      allow update: if false;
+    }
+    
+    // Keep everything else locked down
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

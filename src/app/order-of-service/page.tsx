@@ -126,6 +126,12 @@ const PHOTO_SESSIONS = [
 
 type TabType = "service" | "ministers" | "photographs";
 
+const TAB_TITLES: Record<TabType, string> = {
+  service: "Order of Service",
+  ministers: "Officiating Ministers",
+  photographs: "Order of Photographs",
+};
+
 export default function OrderOfServicePage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<TabType>("service");
@@ -155,28 +161,24 @@ export default function OrderOfServicePage() {
         </span>
       </header>
 
-      {/* Main Editorial Hero */}
-      <section className="px-6 pt-12 pb-8 text-center max-w-3xl mx-auto space-y-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="space-y-3"
-        >
-          <span className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-gold-400 font-sans block">
-            Solemnization of Holy Matrimony
-          </span>
-          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-[#fff2d6] font-normal leading-tight">
-            Order of Service
-          </h1>
-          <p className="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] text-gold-200/80 pt-1">
-            Dorcas Okon Monday &amp; Victor Onyekachi Ezennaya
-          </p>
-          <div className="w-20 h-px bg-linear-to-r from-transparent via-gold-400 to-transparent mx-auto mt-4" />
-          <p className="font-sans text-[11px] sm:text-xs text-gold-400/70 tracking-wider">
-            Saturday, October 10, 2026 &bull; Insight Bible Church, Uyo, Nigeria
-          </p>
-        </motion.div>
+      {/* Dynamic Editorial Hero */}
+      <section className="px-6 pt-10 pb-6 text-center max-w-3xl mx-auto space-y-2">
+        <span className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-gold-400 font-sans block">
+          Solemnization of Holy Matrimony
+        </span>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl text-[#fff2d6] font-normal leading-tight">
+              {TAB_TITLES[activeTab]}
+            </h1>
+          </motion.div>
+        </AnimatePresence>
       </section>
 
       {/* Interactive Tab Switcher */}
@@ -234,10 +236,7 @@ export default function OrderOfServicePage() {
               className="space-y-4"
             >
               <div className="text-center mb-6">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-gold-400/70 font-sans">
-                  The Solemn Assembly
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100 mt-1">
+                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100">
                   Program of Events
                 </h2>
               </div>
@@ -250,23 +249,18 @@ export default function OrderOfServicePage() {
                       <div>
                         <button
                           onClick={() => setHymnExpanded(!hymnExpanded)}
-                          className="w-full text-left p-4 sm:p-5 flex items-start sm:items-center justify-between gap-3 group cursor-pointer focus:outline-none"
+                          className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-3 group cursor-pointer focus:outline-none"
                           aria-expanded={hymnExpanded}
                         >
-                          <div className="flex items-start sm:items-center gap-3.5 sm:gap-4 flex-1">
+                          <div className="flex items-center gap-3.5 sm:gap-4 flex-1">
                             <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gold-400 bg-gold-400/20 text-gold-200 text-xs sm:text-sm font-mono shrink-0 shadow-[0_0_10px_rgba(223,186,115,0.3)]">
                               {item.id}
                             </span>
-                            <div>
-                              <div className="flex items-center gap-2">
-                                <h3 className="font-serif text-base sm:text-lg text-gold-200 group-hover:text-gold-100 font-medium transition-colors">
-                                  {item.title}
-                                </h3>
-                                <Music className="w-4 h-4 text-gold-400 animate-pulse" />
-                              </div>
-                              <p className="text-xs sm:text-sm text-gold-400/80 font-sans mt-0.5">
-                                {hymnExpanded ? "Tap to hide lyrics" : "Tap to view hymn lyrics"}
-                              </p>
+                            <div className="flex items-center gap-2">
+                              <h3 className="font-serif text-base sm:text-lg text-gold-200 group-hover:text-gold-100 font-medium transition-colors">
+                                {item.title}
+                              </h3>
+                              <Music className="w-4 h-4 text-gold-400 animate-pulse" />
                             </div>
                           </div>
 
@@ -339,18 +333,13 @@ export default function OrderOfServicePage() {
                       </div>
                     ) : (
                       /* Standard Service Item */
-                      <div className="p-4 sm:p-5 flex items-start sm:items-center gap-3.5 sm:gap-4">
+                      <div className="p-4 sm:p-5 flex items-center gap-3.5 sm:gap-4">
                         <span className="flex items-center justify-center w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-gold-500/40 bg-gold-500/10 text-gold-300 text-xs sm:text-sm font-mono shrink-0">
                           {item.id}
                         </span>
-                        <div>
-                          <h3 className="font-serif text-base sm:text-lg text-[#fff2d6] font-medium">
-                            {item.title}
-                          </h3>
-                          <p className="text-xs sm:text-sm text-gold-100/60 font-sans mt-0.5">
-                            {item.detail}
-                          </p>
-                        </div>
+                        <h3 className="font-serif text-base sm:text-lg text-[#fff2d6] font-medium">
+                          {item.title}
+                        </h3>
                       </div>
                     )}
                   </div>
@@ -370,15 +359,9 @@ export default function OrderOfServicePage() {
               className="space-y-6"
             >
               <div className="text-center mb-6">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-gold-400/70 font-sans">
-                  The Altar of God
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100 mt-1">
-                  Officiating Ministers
+                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100">
+                  Presiding Ministers
                 </h2>
-                <p className="text-xs sm:text-sm text-gold-200/70 max-w-md mx-auto mt-2">
-                  Ministers presiding over the solemnization and blessing of Dorcas and Victor.
-                </p>
               </div>
 
               <div className="divide-y divide-gold-900/30 rounded-2xl border border-gold-500/30 bg-[#120e0b]/80 shadow-[0_10px_35px_rgba(0,0,0,0.7)] backdrop-blur-md overflow-hidden">
@@ -407,9 +390,6 @@ export default function OrderOfServicePage() {
                     <h3 className="font-serif text-sm sm:text-base text-gold-200 font-medium">
                       Other Anointed Ministers of God
                     </h3>
-                    <p className="text-xs sm:text-sm text-gold-100/60 font-sans mt-0.5">
-                      Visiting pastors, presiding elders, and gospel ministers in attendance.
-                    </p>
                   </div>
                 </div>
               </div>
@@ -427,15 +407,9 @@ export default function OrderOfServicePage() {
               className="space-y-6"
             >
               <div className="text-center mb-6">
-                <span className="text-[11px] uppercase tracking-[0.25em] text-gold-400/70 font-sans">
-                  Post-Service Photo Sessions
-                </span>
-                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100 mt-1">
-                  Order of Photographs
+                <h2 className="font-serif text-2xl sm:text-3xl text-gold-100">
+                  Post-Session Photographs
                 </h2>
-                <p className="text-xs sm:text-sm text-gold-200/70 max-w-lg mx-auto mt-2">
-                  Kindly locate your group number below. The photograph coordinator will announce each session sequentially.
-                </p>
               </div>
 
               <div className="divide-y divide-gold-900/30 rounded-2xl border border-gold-500/30 bg-[#120e0b]/80 shadow-[0_10px_35px_rgba(0,0,0,0.7)] backdrop-blur-md overflow-hidden">

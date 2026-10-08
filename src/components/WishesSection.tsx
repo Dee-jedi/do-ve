@@ -85,7 +85,7 @@ export default function WishesSection() {
     if (!name.trim() || !message.trim()) return;
 
     try {
-      await addDoc(collection(db, "wishes"), {
+      await addDoc(collection(db, "pendingWishes"), {
         name: name.trim(),
         relation,
         message: message.trim(),
@@ -99,7 +99,7 @@ export default function WishesSection() {
 
       setTimeout(() => {
         setSubmitted(false);
-      }, 4000);
+      }, 5000);
     } catch (error) {
       console.error("Error saving wish:", error);
     }
@@ -203,10 +203,10 @@ export default function WishesSection() {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex items-center justify-center gap-2 rounded-lg bg-gold-400/15 border border-gold-400/40 p-3 text-sm text-gold-200"
+                className="flex items-center justify-center gap-2 rounded-lg bg-gold-400/15 border border-gold-400/40 p-3 text-xs sm:text-sm text-gold-200 text-center"
               >
-                <Heart className="h-4 w-4 fill-gold-400 text-gold-400" />
-                <span>Thank you! Your wish was delivered with love.</span>
+                <Heart className="h-4 w-4 fill-gold-400 text-gold-400 shrink-0" />
+                <span>Thank you! Your heartfelt blessing has been received and will appear shortly once reviewed.</span>
               </motion.div>
             )}
             </form>

@@ -85,7 +85,7 @@ export default function LoveStoryPreview() {
             Victor and Dorcas met in August of 2022 at Beulah International Schools where he taught Mathematics and she had just been employed fresh-off NYSC to be the English teacher.
           </p>
           <p className="font-sans font-light text-gold-100/70 leading-relaxed text-sm sm:text-base md:text-lg">
-            What started as an attempt to recruit an instrumentalist for the church blossomed into years of friendship, partnership, and a love story we are thrilled to celebrate with you.
+            What started as an attempt to recruit an instrumentalist for the church blossomed into years of friendship, partnership, and a love story they are thrilled to share with you.
           </p>
         </motion.div>
 
