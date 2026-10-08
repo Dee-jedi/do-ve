@@ -58,7 +58,7 @@ export default function GiftsModal({ isOpen, onClose }: GiftsModalProps) {
 
           {/* Account Details Minimalist Block */}
           <div className="relative border-y border-gold-900/30 py-8">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0c0a09] px-4 text-[10px] uppercase tracking-widest text-gold-400/80 font-mono">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#0c0a09] px-4 text-[10px] uppercase tracking-widest text-gold-400/80 font-mono whitespace-nowrap">
               Wedding Gift Account
             </div>
 
